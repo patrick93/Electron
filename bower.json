@@ -1,0 +1,23 @@
+{
+  "name": "electron",
+  "description": "A test application using elecron, typescript and gulp",
+  "main": "main.js",
+  "authors": [
+    "Patrick Gazaneo <pck1993@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/patrick93/Electron",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.0.4",
+    "angular": "^1.4.9",
+    "angular-route": "^1.4.9"
+  }
+}

@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "**/*.tsx",
+        "!node_modules/**"
+    ],
+    "compileOnSave": true,
+    "buildOnSave": false,
+    "files": [
+        "Electron.App/ElectronApp.ts",
+        "Electron.App/Home/HomeController.ts",
+        "Electron.App/Interfaces/Columns.ts",
+        "Electron.App/Interfaces/User.ts",
+        "typings/browser.d.ts",
+        "typings/browser/ambient/angular-route/angular-route.d.ts",
+        "typings/browser/ambient/angular/angular.d.ts",
+        "typings/main.d.ts",
+        "typings/main/ambient/angular-route/angular-route.d.ts",
+        "typings/main/ambient/angular/angular.d.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}
