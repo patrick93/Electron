@@ -1,10 +1,9 @@
 ((): void => {
     'use strict';
-    
+
     angular.module('electron', ['ngMaterial', 'ngRoute']);
 
-    angular.module('electron')
-        .config(config);
+    angular.module('electron').config(config);
 
     config.$inject = ['$routeProvider'];
     function config($routeProvider: ng.route.IRouteProvider): void {

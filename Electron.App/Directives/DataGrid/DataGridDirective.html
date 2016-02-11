@@ -1,0 +1,30 @@
+<table class="data-grid">
+    <thead>
+        <tr>
+            <th ng-repeat="column in dataGridCtrl.columns">
+                <ng-include src="dataGridCtrl.getColumnTemplate(column)"></ng-include>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in dataGridCtrl.dataGrid">
+            <td ng-repeat="column in dataGridCtrl.columns">
+                <ng-include src="dataGridCtrl.getDataTemplate(column)"></ng-include>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/ng-template" id="default-column.html">
+    {{column.caption}}
+</script>
+
+<script type="text/ng-template" id="default-row.html">
+    {{row[column.model]}}
+</script>
+
+<script type="text/ng-template" id="add-column-header.html">
+    <md-button class="md-fab md-mini md-primary" ng-click="column.AddFunction()">
+        <md-icon>add</md-icon>
+    </md-button>
+</script>

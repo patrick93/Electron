@@ -4,15 +4,17 @@ module electron {
     interface IHomeScope {
         title: string;
         get(): void;
+        add(): void;
     }
 
     class HomeController implements IHomeScope {
         title: string;
-        columns: IColumns[];
+        columns: Columns[];
         dataGrid: IUser[];
 
-        static $inject = [];
-        constructor() {
+        static $inject = ["$mdDialog", "ColumnFactory"];
+        constructor(private $mdDialog: angular.material.IDialogService,
+                    private ColumnFactory: IColumnFactory) {
             this.title = "Teste";
             this.setColumns();
             this.get();
@@ -20,23 +22,11 @@ module electron {
 
         private setColumns(): void {
             this.columns = [
-                {
-                    caption: "Name",
-                    model: "Name"
-                },
-                {
-                    caption: "Age",
-                    model: "Age"
-                },
-                {
-                    caption: "Text",
-                    model: "Text"
-                }
+                this.ColumnFactory.makeAddColumn(() => { this.add(); }),
+                this.ColumnFactory.makeBaseColumn("Name", "Name"),
+                this.ColumnFactory.makeBaseColumn("Age", "Age"),
+                this.ColumnFactory.makeBaseColumn("Text", "Text")
             ]
-        }
-
-        getData(row: IUser, column: IColumns): string {
-            return row[column.model];
         }
 
         get(): void {
@@ -49,7 +39,19 @@ module electron {
                     Name: "Rodrigo",
                     Age: 24
                 }
-            ]
+            ];
+        }
+
+        add(): void {
+            this.$mdDialog.show({
+                controller: electron.AddModalUserController,
+                controllerAs: "modalCtrl",
+                templateUrl: "Electron.App/Home/AddModalUser.html"
+            }).then((user: IUser) => {
+                this.dataGrid.push(user);
+            }, () => {
+                console.log("canceled")
+            });
         }
     }
 

@@ -17,21 +17,24 @@
     "filesGlob": [
         "**/*.ts",
         "**/*.tsx",
-        "!node_modules/**"
+        "!node_modules/**",
+        "!typings/browser/**",
+        "!typings/browser.d.ts"
     ],
     "compileOnSave": true,
     "buildOnSave": false,
     "files": [
+        "Electron.App/Directives/DataGrid/DataGridDirective.ts",
         "Electron.App/ElectronApp.ts",
+        "Electron.App/Home/AddModalUserController.ts",
         "Electron.App/Home/HomeController.ts",
-        "Electron.App/Interfaces/Columns.ts",
-        "Electron.App/Interfaces/User.ts",
-        "typings/browser.d.ts",
-        "typings/browser/ambient/angular-route/angular-route.d.ts",
-        "typings/browser/ambient/angular/angular.d.ts",
+        "Electron.App/Shared/ColumnsFactory.ts",
+        "Electron.App/Shared/Interfaces/Columns.ts",
         "typings/main.d.ts",
+        "typings/main/ambient/angular-material/angular-material.d.ts",
         "typings/main/ambient/angular-route/angular-route.d.ts",
-        "typings/main/ambient/angular/angular.d.ts"
+        "typings/main/ambient/angular/angular.d.ts",
+        "typings/main/ambient/jquery/jquery.d.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

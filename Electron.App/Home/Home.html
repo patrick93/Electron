@@ -1,19 +1,4 @@
 <h1>{{homeCtrl.title}}</h1>
 <md-content class="md-whiteframe-z2" flex>
-    <table class="data-grid">
-        <thead>
-            <tr>
-                <th ng-repeat="column in homeCtrl.columns">
-                    {{column.caption}}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="row in homeCtrl.dataGrid">
-                <td ng-repeat="column in homeCtrl.columns">
-                    {{homeCtrl.getData(row, column)}}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <grid columns="homeCtrl.columns" grid-data="homeCtrl.dataGrid"></grid>
 </md-content>

@@ -1,0 +1,23 @@
+<md-dialog>
+    <h1>Add User</h1>
+    <md-dialog-content>
+        <form name="UserForm">
+            <md-input-container>
+                <label>Name</label>
+                <input type="text" ng-model="modalCtrl.User.Name" />
+            </md-input-container>
+            <md-input-container>
+                <label>Age</label>
+                <input type="number" ng-model="modalCtrl.User.Age" />
+            </md-input-container>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="modalCtrl.save()">
+            Save
+        </md-button>
+        <md-button ng-click="modalCtrl.cancel()">
+            Cancel
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
