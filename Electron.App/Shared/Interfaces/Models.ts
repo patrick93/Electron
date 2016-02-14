@@ -2,10 +2,14 @@ module electron {
     'use strict';
 
     export class Entity {
-        ID: number;
+        id: number;
 
-        static Equals(entity1: Entity, entity2: Entity) {
-            return entity1.ID === entity2.ID;
+        static Equals(entity1: Entity, entity2: Entity): boolean {
+            return entity1.id === entity2.id;
+        }
+
+        static HasId(entity: Entity): boolean {
+            return entity.id !== 0;
         }
     }
 

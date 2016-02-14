@@ -10,13 +10,28 @@ module electron {
     export class AddModalUserController implements IAddModalUserScope {
         User: IUser;
 
-        static $inject = ['$mdDialog', 'user'];
-        constructor(private $mdDialog: angular.material.IDialogService, user: IUser){
-            this.User = user;
+        static $inject = ['$mdDialog', 'id', 'UserDataService'];
+        constructor(private $mdDialog: angular.material.IDialogService,
+                    id: number,
+                    private UserDataService:IUserDataService){
+            this.setUser(id);
+        }
+
+        private setUser(id: number) {
+            if (id !== 0) {
+                this.UserDataService.getById(id).then((user: IUser): void => {
+                    this.User = user;
+                }, (message:string): void => {
+                    console.log(message);
+                });
+            }
         }
 
         save(): void {
-            this.$mdDialog.hide(this.User);
+            this.UserDataService.save(this.User).then((data: IUser): void => {
+                console.log("Usuario salvo")
+                this.$mdDialog.hide(this.User);
+            });
         }
 
         cancel(): void {

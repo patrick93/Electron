@@ -19,6 +19,13 @@ module electron {
         constructor(private $scope: IDataGridScope) {
             this.columns = this.$scope.columns;
             this.dataGrid = this.$scope.gridData;
+            this.setGridWatch();
+        }
+
+        setGridWatch(): void {
+            this.$scope.$watch(() => {return this.$scope.gridData}, (newValue: any): void => {
+                this.dataGrid = newValue;
+            });
         }
     }
 
