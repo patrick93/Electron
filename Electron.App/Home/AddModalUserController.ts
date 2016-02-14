@@ -9,10 +9,10 @@ module electron {
 
     export class AddModalUserController implements IAddModalUserScope {
         User: IUser;
-        
-        static $inject = ['$mdDialog'];
-        constructor(private $mdDialog: angular.material.IDialogService){
 
+        static $inject = ['$mdDialog', 'user'];
+        constructor(private $mdDialog: angular.material.IDialogService, user: IUser){
+            this.User = user;
         }
 
         save(): void {

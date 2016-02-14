@@ -4,8 +4,6 @@ module electron {
     interface IDataGridControllerScope {
         columns: Columns[];
         dataGrid: any[];
-        getColumnTemplate(column: Columns): string;
-        getDataTemplate(row: any, column: Columns): string;
     }
 
     interface IDataGridScope extends ng.IScope {
@@ -21,22 +19,6 @@ module electron {
         constructor(private $scope: IDataGridScope) {
             this.columns = this.$scope.columns;
             this.dataGrid = this.$scope.gridData;
-        }
-
-        getColumnTemplate(column: Columns): string {
-            var columnTpl: string = "default-column.html";
-            if (column instanceof ColumnsAdd) {
-                columnTpl = "add-column-header.html";
-            }
-            return columnTpl
-        }
-
-        getDataTemplate(column: Columns): string {
-            var columnTpl: string = "default-row.html";
-            if (column instanceof ColumnsAdd) {
-                columnTpl = "add-column-data.html";
-            }
-            return columnTpl
         }
     }
 

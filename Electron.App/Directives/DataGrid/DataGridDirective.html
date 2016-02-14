@@ -1,15 +1,15 @@
 <table class="data-grid">
     <thead>
         <tr>
-            <th ng-repeat="column in dataGridCtrl.columns">
-                <ng-include src="dataGridCtrl.getColumnTemplate(column)"></ng-include>
+            <th ng-repeat="column in dataGridCtrl.columns" ng-style="{width: column.width + 'px'}">
+                <ng-include src="column.customHeader"></ng-include>
             </th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="row in dataGridCtrl.dataGrid">
-            <td ng-repeat="column in dataGridCtrl.columns">
-                <ng-include src="dataGridCtrl.getDataTemplate(column)"></ng-include>
+            <td ng-repeat="column in dataGridCtrl.columns" ng-style="{width: column.width + 'px'}">
+                <ng-include src="column.customTemplate"></ng-include>
             </td>
         </tr>
     </tbody>
@@ -26,5 +26,17 @@
 <script type="text/ng-template" id="add-column-header.html">
     <md-button class="md-fab md-mini md-primary" ng-click="column.AddFunction()">
         <md-icon>add</md-icon>
+    </md-button>
+</script>
+
+<script type="text/ng-template" id="add-column-data.html">
+    <md-button class="md-fab md-mini md-primary" ng-click="column.EditFunction(row)">
+        <md-icon>edit</md-icon>
+    </md-button>
+</script>
+
+<script type="text/ng-template" id="delete-column-data.html">
+    <md-button class="md-fab md-mini md-primary" ng-click="column.DeleteFunction(row)">
+        <md-icon>delete</md-icon>
     </md-button>
 </script>
