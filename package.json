@@ -9,9 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "electron-connect": "^0.3.7",
     "electron-prebuilt": "^0.36.2",
     "gulp": "^3.9.0",
     "gulp-shell": "^0.5.1",
-    "gulp-util": "^3.0.7"
+    "gulp-typescript": "^2.11.0",
+    "gulp-util": "^3.0.7",
+    "run-sequence": "^1.1.5"
   }
 }

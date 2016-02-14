@@ -67,7 +67,7 @@ module electron {
             }
             this.dataGrid.splice(index, 1);
         }
-        
+
         get(): void {
             this.dataGrid = [
                 {
