@@ -9,7 +9,7 @@ module electron {
         }
 
         static HasId(entity: Entity): boolean {
-            return entity.id !== 0;
+            return entity.id > 0;
         }
     }
 

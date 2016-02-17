@@ -1,4 +1,4 @@
-module electron{
+module electron {
     "use strict";
 
     export interface IUserDataService {
@@ -12,7 +12,7 @@ module electron{
         apiUrl: string = "http://localhost:3000/users";
 
         static $inject = ['$http', '$q'];
-        constructor(private $http: ng.IHttpService, private $q: ng.IQService){
+        constructor(private $http: ng.IHttpService, private $q: ng.IQService) {
 
         }
 
@@ -50,7 +50,7 @@ module electron{
             return Entity.HasId(user) ? this.edit(user) : this.add(user);
         }
 
-        private edit(user: IUser) : ng.IPromise<IUser> {
+        private edit(user: IUser): ng.IPromise<IUser> {
             var defer: ng.IDeferred<IUser> = this.$q.defer();
             this.$http.put(this.apiUrl + "/" + user.id, user).success((data: IUser): void => {
                 defer.resolve(data);
@@ -60,7 +60,7 @@ module electron{
             return defer.promise;
         }
 
-        private add(user: IUser) : ng.IPromise<IUser> {
+        private add(user: IUser): ng.IPromise<IUser> {
             var defer: ng.IDeferred<IUser> = this.$q.defer();
             this.$http.post(this.apiUrl, user).success((data: IUser): void => {
                 defer.resolve(data);
