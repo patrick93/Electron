@@ -11,6 +11,10 @@
             templateUrl: 'Electron.App/Home/Home.html',
             controller: 'HomeController',
             controllerAs: 'homeCtrl'
+        }).when('/operacao', {
+            templateUrl: 'Electron.App/Operacao/Operacao.html',
+            controller: 'OperacaoController',
+            controllerAs: 'operacaoCtrl'
         })
     }
 })();

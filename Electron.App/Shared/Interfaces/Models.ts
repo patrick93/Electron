@@ -17,4 +17,11 @@ module electron {
         Name: string;
         Age: number;
     }
+
+    export class Operation extends Entity {
+        Name: string;
+        Type: OperationType;
+    }
+
+    enum OperationType {Active, Receptive}
 }

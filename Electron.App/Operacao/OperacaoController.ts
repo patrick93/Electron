@@ -1,14 +1,14 @@
 module electron {
     'use strict';
 
-    interface IHomeScope {
+    interface IOperacaoScope {
         title: string;
         get(): void;
         delete(user: IUser): void;
         showModal(id?: number): void;
     }
 
-    class HomeController extends electron.BaseController implements IHomeScope {
+    class OperacaoController extends electron.BaseController implements IOperacaoScope {
         title: string;
 
         static $inject = ["$mdDialog", "ColumnFactory", "UserDataService"];
@@ -21,10 +21,9 @@ module electron {
         setBaseColumns(): Columns[] {
             return [
                 this.ColumnFactory.makeBaseColumn("Name", "Name"),
-                this.ColumnFactory.makeBaseColumn("Age", "Age"),
-                this.ColumnFactory.makeBaseColumn("Text", "Text")];
+                this.ColumnFactory.makeBaseColumn("Type", "Type")];
         }
     }
 
-    angular.module('electron').controller('HomeController', HomeController);
+    angular.module('electron').controller('OperacaoController', OperacaoController);
 }

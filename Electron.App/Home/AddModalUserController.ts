@@ -18,7 +18,7 @@ module electron {
         }
 
         private setUser(id: number) {
-            if (id !== 0) {
+            if (id > 0) {
                 this.UserDataService.getById(id).then((user: IUser): void => {
                     this.User = user;
                 }, (message:string): void => {
