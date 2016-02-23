@@ -11,7 +11,7 @@ module electron {
 
         constructor(protected $mdDialog: angular.material.IDialogService,
                     protected ColumnFactory: IColumnFactory,
-                    protected UserDataService: IUserDataService,
+                    protected DataService: IBaseDataService,
                     protected title: string) {
             this.setColumns();
             this.get();
@@ -19,14 +19,18 @@ module electron {
 
         private setColumns(): void {
             this.columns = [
-                this.ColumnFactory.makeAddColumn(() => { this.showModal(); },
-                                                    (user:IUser) => {this.showModal(user.id)},
+                this.ColumnFactory.makeAddColumn(() => { this.add(); },
+                                                    (entity:Entity) => {this.edit(entity.id)},
                                                     20)];
             this.columns = this.columns.concat(this.setBaseColumns());
             this.columns.push(this.ColumnFactory.makeDeleteColumn((user:IUser) => {this.delete(user)}, 20));
         }
 
         abstract setBaseColumns(): Columns[];
+
+        abstract add(): void;
+
+        abstract edit(): void;
 
         showModal(id?: number): void {
             this.$mdDialog.show({
@@ -56,7 +60,7 @@ module electron {
         }
 
         private deleteFromGrid(user: IUser): void {
-            this.UserDataService.delete(user.id).then((user: IUser): void => {
+            this.DataService.delete(user.id).then((user: IUser): void => {
                 console.log("Usuario deletado");
                 this.get();
             }, (message: string): void => {
@@ -65,7 +69,7 @@ module electron {
         }
 
         get(): void {
-            this.UserDataService.get().then((data: IUser[]): void => {
+            this.DataService.get().then((data: IUser[]): void => {
                 this.dataGrid = data;
             }, (message: string): void => {
                 console.log(message);

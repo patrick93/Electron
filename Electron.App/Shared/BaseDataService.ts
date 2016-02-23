@@ -1,14 +1,14 @@
 module electron {
     "use strict";
 
-    export interface IUserDataService {
+    export interface IBaseDataService {
         delete(id: number): ng.IPromise<Entity>;
         getById(id: number): ng.IPromise<Entity>;
         get(): ng.IPromise<Entity[]>;
         save(user: Entity): ng.IPromise<Entity>;
     }
 
-    export class BaseDataService implements IUserDataService {
+    export class BaseDataService implements IBaseDataService {
         protected apiUrl: string = "http://localhost:3000/";
 
         constructor(protected $http: ng.IHttpService, protected $q: ng.IQService, private path: string) {
