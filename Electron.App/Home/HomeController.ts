@@ -8,14 +8,14 @@ module electron {
         showModal(id?: number): void;
     }
 
-    class HomeController extends electron.BaseController implements IHomeScope {
+    class HomeController extends electron.BaseModalController implements IHomeScope {
         title: string;
 
         static $inject = ["$mdDialog", "ColumnFactory", "UserDataService"];
         constructor($mdDialog: angular.material.IDialogService,
                     ColumnFactory: IColumnFactory,
                     UserDataService: IUserDataService) {
-            super($mdDialog, ColumnFactory, UserDataService, "Teste");
+            super($mdDialog, ColumnFactory, UserDataService, "Teste", "Electron.App/Home/AddModalUser.html", AddModalUserController);
         }
 
         setBaseColumns(): Columns[] {

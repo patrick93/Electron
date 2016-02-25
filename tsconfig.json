@@ -33,6 +33,7 @@
         "Electron.App/Operacao/OperacaoController.ts",
         "Electron.App/Shared/BaseController.ts",
         "Electron.App/Shared/BaseDataService.ts",
+        "Electron.App/Shared/BaseModalController.ts",
         "Electron.App/Shared/Interfaces/Models.ts",
         "typings/main.d.ts",
         "typings/main/ambient/angular-material/angular-material.d.ts",

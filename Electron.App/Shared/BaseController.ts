@@ -30,20 +30,7 @@ module electron {
 
         abstract add(): void;
 
-        abstract edit(): void;
-
-        showModal(id?: number): void {
-            this.$mdDialog.show({
-                controller: AddModalUserController,
-                controllerAs: "modalCtrl",
-                templateUrl: "Electron.App/Home/AddModalUser.html",
-                locals: {id: id}
-            }).then((user: IUser) => {
-                this.get();
-            }, () => {
-                console.log("canceled")
-            });
-        }
+        abstract edit(id: number): void;
 
         delete(user: IUser): void {
             var confirm: angular.material.IConfirmDialog = this.$mdDialog.confirm()
