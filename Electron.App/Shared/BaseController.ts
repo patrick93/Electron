@@ -7,7 +7,7 @@ module electron {
 
     export abstract class BaseController implements IBaseController {
         columns: Columns[];
-        dataGrid: IUser[];
+        dataGrid: Entity[];
 
         constructor(protected $mdDialog: angular.material.IDialogService,
                     protected ColumnFactory: IColumnFactory,
@@ -23,7 +23,7 @@ module electron {
                                                     (entity:Entity) => {this.edit(entity.id)},
                                                     20)];
             this.columns = this.columns.concat(this.setBaseColumns());
-            this.columns.push(this.ColumnFactory.makeDeleteColumn((user:IUser) => {this.delete(user)}, 20));
+            this.columns.push(this.ColumnFactory.makeDeleteColumn((entity:Entity) => {this.delete(entity)}, 20));
         }
 
         abstract setBaseColumns(): Columns[];
@@ -32,7 +32,7 @@ module electron {
 
         abstract edit(id: number): void;
 
-        delete(user: IUser): void {
+        delete(entity: Entity): void {
             var confirm: angular.material.IConfirmDialog = this.$mdDialog.confirm()
                 .title("Atenção")
                 .textContent("Tem certeza que quer deletar?")
@@ -40,14 +40,14 @@ module electron {
                 .cancel("Cancelar");
 
             this.$mdDialog.show(confirm).then(() => {
-                this.deleteFromGrid(user);
+                this.deleteFromGrid(entity);
             }, () => {
                 console.log("canceled")
             });
         }
 
-        private deleteFromGrid(user: IUser): void {
-            this.DataService.delete(user.id).then((user: IUser): void => {
+        private deleteFromGrid(entity: Entity): void {
+            this.DataService.delete(entity.id).then((entity: Entity): void => {
                 console.log("Usuario deletado");
                 this.get();
             }, (message: string): void => {
@@ -56,7 +56,7 @@ module electron {
         }
 
         get(): void {
-            this.DataService.get().then((data: IUser[]): void => {
+            this.DataService.get().then((data: Entity[]): void => {
                 this.dataGrid = data;
             }, (message: string): void => {
                 console.log(message);
