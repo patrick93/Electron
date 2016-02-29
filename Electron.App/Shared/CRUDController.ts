@@ -5,7 +5,7 @@ module electron {
 
     }
 
-    export abstract class BaseController implements IBaseController {
+    export abstract class CRUDController implements IBaseController {
         columns: Columns[];
         dataGrid: Entity[];
 

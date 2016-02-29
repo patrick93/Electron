@@ -1,36 +1,34 @@
-module electron{
+module electron {
     "use strict";
 
-    export abstract class BaseModalController extends electron.BaseController {
+    export class BaseModalController<T extends Entity> {
+        Entity: T;
+
         constructor(protected $mdDialog: angular.material.IDialogService,
-                    protected ColumnFactory: IColumnFactory,
-                    protected DataService: IBaseDataService,
-                    protected title: string,
-                    private modalTemplateUrl: string,
-                    private modalController: Function
-                ) {
-            super($mdDialog, ColumnFactory, DataService, title);
+                    id: number,
+                    protected DataService:IBaseDataService){
+            this.setEntity(id);
         }
 
-        add(): void {
-            this.showModal();
+        private setEntity(id: number) {
+            if (id > 0) {
+                this.DataService.getById(id).then((entity: T): void => {
+                    this.Entity = entity;
+                }, (message:string): void => {
+                    console.log(message);
+                });
+            }
         }
 
-        edit(id: number): void {
-            this.showModal(id);
-        }
-
-        showModal(id?: number): void {
-            this.$mdDialog.show({
-                controller: this.modalController,
-                controllerAs: "modalCtrl",
-                templateUrl: this.modalTemplateUrl,
-                locals: {id: id}
-            }).then(() => {
-                this.get();
-            }, () => {
-                console.log("canceled")
+        save(): void {
+            this.DataService.save(this.Entity).then((data: Entity): void => {
+                console.log("Usuario salvo")
+                this.$mdDialog.hide(this.Entity);
             });
+        }
+
+        cancel(): void {
+            this.$mdDialog.cancel();
         }
     }
 }

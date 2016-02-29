@@ -8,7 +8,7 @@ module electron {
         showModal(id?: number): void;
     }
 
-    class HomeController extends electron.BaseModalController implements IHomeScope {
+    class HomeController extends electron.CRUDModalController implements IHomeScope {
         title: string;
 
         static $inject = ["$mdDialog", "ColumnFactory", "UserDataService"];

@@ -23,5 +23,5 @@ module electron {
         Type: OperationType;
     }
 
-    enum OperationType {Active, Receptive}
+    export enum OperationType {Active, Receptive}
 }

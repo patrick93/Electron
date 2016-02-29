@@ -8,14 +8,14 @@ module electron {
         showModal(id?: number): void;
     }
 
-    class OperacaoController extends electron.BaseController implements IOperacaoScope {
+    class OperacaoController extends electron.CRUDModalController implements IOperacaoScope {
         title: string;
 
-        static $inject = ["$mdDialog", "ColumnFactory", "UserDataService"];
+        static $inject = ["$mdDialog", "ColumnFactory", "OperacaoDataService"];
         constructor($mdDialog: angular.material.IDialogService,
                     ColumnFactory: IColumnFactory,
-                    UserDataService: IUserDataService) {
-            super($mdDialog, ColumnFactory, UserDataService, "Teste");
+                    OperacaoDataService: IOperacaoDataService) {
+            super($mdDialog, ColumnFactory, OperacaoDataService, "Operacao", "Electron.App/Operacao/AddOperacaoModal.html", AddOperacaoController);
         }
 
         setBaseColumns(): Columns[] {

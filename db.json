@@ -9,6 +9,18 @@
       "Name": "Rodrigo",
       "Age": 12,
       "id": 2
+    },
+    {
+      "Name": "Teste",
+      "Age": 12,
+      "id": 3
+    }
+  ],
+  "operacoes": [
+    {
+      "id": 1,
+      "Name": "Op",
+      "Type": 1
     }
   ]
 }

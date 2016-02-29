@@ -17,7 +17,10 @@
         <div flex layout="row">
 
             <!-- Container #3 -->
-            <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2"></md-sidenav>
+            <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+                <a href="#/">Users</a>
+                <a href="#/operacao">Operacao</a>
+            </md-sidenav>
 
             <!-- Container #4 -->
             <md-content flex layout-padding ng-view></md-content>
@@ -34,7 +37,8 @@
         <script src="./bower_components/angular-aria/angular-aria.js" type="text/javascript"></script>
         <script src="./bower_components/angular-material/angular-material.js" type="text/javascript"></script>
         <script src="./bower_components/angular-route/angular-route.js" charset="utf-8"></script>
-        <script src="Electron.App/Shared/BaseController.js" charset="utf-8"></script>
+        <script src="Electron.App/Shared/CRUDController.js" charset="utf-8"></script>
+        <script src="Electron.App/Shared/CRUDModalController.js" charset="utf-8"></script>
         <script src="Electron.App/Shared/BaseModalController.js" charset="utf-8"></script>
         <script src="Electron.App/Shared/BaseDataService.js" charset="utf-8"></script>
         <script src="Electron.App/Shared/Interfaces/Models.js" charset="utf-8"></script>
@@ -42,7 +46,10 @@
         <script src="Electron.App/Directives/DataGrid/DataGridDirective.js" charset="utf-8"></script>
         <script src="Electron.App/Directives/DataGrid/ColumnsFactory.js" charset="utf-8"></script>
         <script src="Electron.App/Home/UserDataService.js" charset="utf-8"></script>
+        <script src="Electron.App/Operacao/OperacaoDataService.js" charset="utf-8"></script>
         <script src="Electron.App/Home/HomeController.js" charset="utf-8"></script>
+        <script src="Electron.App/Operacao/OperacaoController.js" charset="utf-8"></script>
         <script src="Electron.App/Home/AddModalUserController.js" charset="utf-8"></script>
+        <script src="Electron.App/Operacao/AddOperacaoController.js" charset="utf-8"></script>
     </body>
 </html>

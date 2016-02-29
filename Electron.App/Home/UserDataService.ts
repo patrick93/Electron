@@ -1,11 +1,7 @@
 module electron {
     "use strict";
 
-    export interface IUserDataService {
-        delete(id: number): ng.IPromise<IUser>;
-        getById(id: number): ng.IPromise<IUser>;
-        get(): ng.IPromise<IUser[]>;
-        save(user: IUser): ng.IPromise<IUser>;
+    export interface IUserDataService extends IBaseDataService{
     }
 
     class UserDataService extends electron.BaseDataService implements IUserDataService {
